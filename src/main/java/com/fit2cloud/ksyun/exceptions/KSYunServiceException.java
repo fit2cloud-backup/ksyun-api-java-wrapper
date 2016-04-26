@@ -9,33 +9,34 @@ package com.fit2cloud.ksyun.exceptions;
  */
 public class KSYunServiceException extends Exception{
     private static final long serialVersionUID = -7296361394906881990L;
-    private int errorCode;
-    private int requestId;
-    private String errorMessage;
+    private int Code;
+    private int RequestId;
+    private String Message;
     private String service;
 
-    public int getErrorCode() {
-        return errorCode;
+    public int getCode() {
+        return Code;
     }
 
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
+    public void setCode(int code) {
+        Code = code;
     }
 
     public int getRequestId() {
-        return requestId;
+        return RequestId;
     }
 
     public void setRequestId(int requestId) {
-        this.requestId = requestId;
+        RequestId = requestId;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    @Override
+    public String getMessage() {
+        return Message;
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+    public void setMessage(String message) {
+        Message = message;
     }
 
     public String getService() {
@@ -48,10 +49,10 @@ public class KSYunServiceException extends Exception{
 
     @Override
     public String toString() {
-        return "QCloudServiceException{" +
-                "errorCode=" + errorCode +
-                ", requestId=" + requestId +
-                ", errorMessage='" + errorMessage + '\'' +
+        return "KSYunServiceException{" +
+                "Code=" + Code +
+                ", RequestId=" + RequestId +
+                ", Message='" + Message + '\'' +
                 ", service='" + service + '\'' +
                 '}';
     }
