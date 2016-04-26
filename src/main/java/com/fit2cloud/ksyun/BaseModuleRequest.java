@@ -1,37 +1,24 @@
 package com.fit2cloud.ksyun;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.TimeZone;
-import java.util.TreeMap;
-import java.util.UUID;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import com.fit2cloud.ksyun.exceptions.KSYunClientException;
 import com.fit2cloud.ksyun.exceptions.KSYunServiceException;
 import com.fit2cloud.ksyun.util.GlobalConst;
 import com.fit2cloud.ksyun.util.KSSign;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.*;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class BaseModuleRequest {
 
@@ -70,7 +57,7 @@ public class BaseModuleRequest {
                 String message = readContent(stream);
                 CommonErrorResponse error = gson.fromJson(message, CommonErrorResponse.class);
                 KSYunServiceException exception = new KSYunServiceException(error.getMessage());
-                exception.setErrorCode(error.getCode());
+                exception.setCode(error.getCode());
                 exception.setService(action);
                 throw exception;
             } else {
