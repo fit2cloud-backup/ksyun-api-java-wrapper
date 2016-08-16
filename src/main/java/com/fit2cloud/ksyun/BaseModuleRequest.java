@@ -56,9 +56,11 @@ public class BaseModuleRequest {
                 stream = response.getEntity().getContent();
                 String message = readContent(stream);
                 CommonErrorResponse error = gson.fromJson(message, CommonErrorResponse.class);
-                KSYunServiceException exception = new KSYunServiceException(error.getMessage());
+                KSYunServiceException exception = new KSYunServiceException();
                 exception.setCode(error.getCode());
                 exception.setService(action);
+                exception.setMessage(error.getMessage());
+                exception.setRequestId(error.getRequestId());
                 throw exception;
             } else {
                 stream = response.getEntity().getContent();

@@ -9,24 +9,24 @@ package com.fit2cloud.ksyun.exceptions;
  */
 public class KSYunServiceException extends Exception{
     private static final long serialVersionUID = -7296361394906881990L;
-    private int Code;
-    private int RequestId;
+    private String Code;
+    private String RequestId;
     private String Message;
-    private String service;
+    private String Service;
 
-    public int getCode() {
+    public String getCode() {
         return Code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         Code = code;
     }
 
-    public int getRequestId() {
+    public String getRequestId() {
         return RequestId;
     }
 
-    public void setRequestId(int requestId) {
+    public void setRequestId(String requestId) {
         RequestId = requestId;
     }
 
@@ -40,11 +40,11 @@ public class KSYunServiceException extends Exception{
     }
 
     public String getService() {
-        return service;
+        return Service;
     }
 
     public void setService(String service) {
-        this.service = service;
+        this.Service = service;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class KSYunServiceException extends Exception{
                 "Code=" + Code +
                 ", RequestId=" + RequestId +
                 ", Message='" + Message + '\'' +
-                ", service='" + service + '\'' +
+                ", Service='" + Service + '\'' +
                 '}';
     }
 
